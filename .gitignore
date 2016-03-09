@@ -1,0 +1,16 @@
+project/project
+project/target
+target
+output*
+*.class
+*.log
+.history
+.cache/
+target/
+.idea/
+.idea_modules/
+.worksheet
+.settings/
+.classpath
+.project
+.cache
