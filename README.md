@@ -13,7 +13,7 @@ and then
 ```scala
 import com.github.truerss.rollbar._
 
-val token = "you-access-token" // <- post_server_item
+val token = "your-access-token" // <- post_server_item
 
 val builder = NotifyBuilder(token, "environment")
 Sender.send(builder.info("some message")) // Result(0, "some-uuid")
