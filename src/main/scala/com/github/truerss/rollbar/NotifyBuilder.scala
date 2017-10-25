@@ -62,7 +62,7 @@ object NotifyBuilder {
   private def build(at: String, lvl: LogLevel, env: String,
                     message: String, fields: Map[String, String] = Map.empty) = {
     val m  = NotifyMessage(message, fields)
-    val body = Body(m)
+    val body = Body(message = m, level = Some(lvl))
     val data = Data(env, body)
     Payload(at, data)
   }
