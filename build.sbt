@@ -13,7 +13,7 @@ val root = Project(
 ).settings(
   organization := "com.github.truerss",
   name := "rollbar-scala",
-  version := "0.0.2",
+  version := "0.0.3",
   licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
   crossScalaVersions := Seq("2.10.5", "2.11.6"),
   publishMavenStyle := true,

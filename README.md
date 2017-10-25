@@ -2,13 +2,13 @@
 
 Easy Api access for [rollbar](https://rollbar.com/)
 
-Current version: 0.0.2
+Current version: 0.0.3
 
 # How to
 
 add dependency
 
-`"com.github.truerss" %% "rollbar-scala" % "0.0.2"`
+`"com.github.truerss" %% "rollbar-scala" % "0.0.3"`
 
 and then
 
