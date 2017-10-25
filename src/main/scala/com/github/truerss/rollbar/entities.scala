@@ -33,11 +33,14 @@ object entities {
   }
 
   case class Payload(accessToken: String, data: Data)
-  case class Data(environment: String, body: Body)
-  case class Body(
-    message: NotifyMessage,
+
+  case class Data(
+    environment: String,
+    body: Body,
     level: Option[LogLevel] = Some(Info)
   )
+
+  case class Body(message: NotifyMessage)
 
   case class NotifyMessage(
     body: String,
