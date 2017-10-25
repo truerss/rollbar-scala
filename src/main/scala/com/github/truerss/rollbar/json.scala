@@ -29,9 +29,7 @@ object json {
 
   implicit object BodyWrites extends JsonWriter[Body] {
     override def write(b: Body) = {
-      val lvl =  b.level.map(l => Map("level" -> LogLevelWrites.write(l)))
-        .getOrElse(Map.empty)
-      JsObject(NotifyMessageWrites.write(b.message).fields ++ lvl)
+      JsObject(NotifyMessageWrites.write(b.message).fields)
     }
   }
 
@@ -39,7 +37,8 @@ object json {
     override def write(d: Data) = {
       JsObject(
         "environment" -> JsString(d.environment),
-        "body" -> BodyWrites.write(d.body)
+        "body" -> BodyWrites.write(d.body),
+        "level" -> LogLevelWrites.write(d.level.getOrElse(Info))
       )
     }
   }
