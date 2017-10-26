@@ -13,16 +13,16 @@ val root = Project(
 ).settings(
   organization := "com.github.truerss",
   name := "rollbar-scala",
-  version := "0.0.3",
+  version := "0.0.4",
   licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
-  crossScalaVersions := Seq("2.10.5", "2.11.6"),
+  crossScalaVersions := Seq("2.10.5", "2.11.6", "2.12.2"),
   publishMavenStyle := true,
   bintrayOrganization := Some("truerss"),
   pomExtra := pomXml,
   publishArtifact in Test := false,
   libraryDependencies ++= Seq(
     "io.spray" %% "spray-json" % "1.3.2",
-    "org.scalaj" %% "scalaj-http" % "2.2.1"
+    "org.scalaj" %% "scalaj-http" % "2.3.0"
   )
 )
 
