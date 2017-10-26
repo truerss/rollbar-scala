@@ -40,13 +40,52 @@ object entities {
     level: Option[LogLevel] = Some(Info)
   )
 
-  case class Body(message: NotifyMessage)
+  case class Trace(frames: Vector[Frame], exception: RollBarException)
+  case class Frame(
+                  fileName: String,
+                  lineNumber: Option[Int],
+                  colNumber: Option[Int],
+                  method: Option[String],
+                  code: Option[String],
+                  className: Option[String],
+                  context: Option[FrameContext],
+                  argSpec: Vector[String],
+                  varargSpec: Option[String],
+                  keyWordSpec: Option[String]
+                  )
+  case class FrameContext(
+                         pre: Vector[String],
+                         post: Vector[String]
+                         )
+  case class RollBarException(
+                              `class`: String,
+                              message: Option[String],
+                              description: Option[String]
+                             )
+  object RollBarException {
+    def apply(t: Throwable): RollBarException = {
+      RollBarException(
+        `class` = t.getClass.getCanonicalName,
+        message = Option(t.getMessage),
+        description = None
+      )
+    }
+  }
+
+  case class Body(message: Option[NotifyMessage],
+                  trace: Option[Trace] = None,
+                  trace_chain: Vector[Trace] = Vector.empty
+                 )
 
   case class NotifyMessage(
     body: String,
     additional: Map[String, String] = Map.empty
   )
 
-  case class Result(err: Int, result: String)
+  sealed trait Result {
+    def err: Int
+  }
+  case class SuccessResult(err: Int, result: String) extends Result
+  case class FailureResult(err: Int, message: String) extends Result
 
 }
